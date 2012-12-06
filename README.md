@@ -17,7 +17,7 @@ To use this you have to adapt your base class to wrap all download* calls:
 
     class MyGebSpec extends GebSpec {
 
-        def downloadConfigInjector = new DownloadConfigInjector({ HttpURLConnection connection ->
+        @Shared def downloadConfigInjector = new DownloadConfigInjector({ HttpURLConnection connection ->
             // connection.set...
         })
 
