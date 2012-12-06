@@ -4,6 +4,10 @@ class DownloadConfigInjector {
 
     Closure defaultConfigClosure
 
+    private static final List<String> GEB_DOWNLOAD_SUPPORT_METHODS = [
+        'download', 'downloadBytes', 'downloadContent', 'downloadStream', 'downloadText'
+    ].asImmutable()
+
     DownloadConfigInjector(Closure defaultConfigClosure) {
         this.defaultConfigClosure = defaultConfigClosure
     }
@@ -49,7 +53,7 @@ class DownloadConfigInjector {
     }
 
     private boolean itIsADownloadMethod(String name) {
-        return name.startsWith('download')
+        return GEB_DOWNLOAD_SUPPORT_METHODS.contains(name)
     }
 
     private Object[] injectDdefaultConfigClosure(Object[] args) {

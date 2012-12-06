@@ -76,6 +76,8 @@ class DownloadConfigInjectorSpec extends Specification {
         'downloadBytes' | [STRING, CLOSURE] | COMPOSE
         'downloadBytes' | [STRING, null]    | INJECT
         'downloadBytes' | [STRING]          | INJECT
+
+        'downloadFoo'   | [STRING]          | DO_NOT_INJECT_OR_COMPOSE
     }
 
     void 'it should compose the closures so that the default config is called before the method config closure'() {
@@ -108,5 +110,4 @@ class DownloadConfigInjectorSpec extends Specification {
         then:
         2 * spy.call(arg)
     }
-
 }
